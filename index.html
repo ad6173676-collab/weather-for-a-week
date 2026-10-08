@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>weather for a week</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="sky" aria-hidden="true">
+    <div class="sky__wash"></div>
+    <div class="sky__glow"></div>
+    <div class="sky__cloud sky__cloud--a"></div>
+    <div class="sky__cloud sky__cloud--b"></div>
+  </div>
+
+  <div class="weather-fx" id="weather-fx" aria-hidden="true">
+    <div class="fx-sun" data-fx="sun">
+      <div class="fx-sun__core"></div>
+      <div class="fx-sun__rays"></div>
+      <div class="fx-sun__beams"></div>
+    </div>
+    <div class="fx-snow" data-fx="snow" id="fx-snow"></div>
+    <div class="fx-rain" data-fx="rain">
+      <div class="fx-rain__cloud">
+        <span class="fx-rain__puff fx-rain__puff--a"></span>
+        <span class="fx-rain__puff fx-rain__puff--b"></span>
+        <span class="fx-rain__puff fx-rain__puff--c"></span>
+        <span class="fx-rain__drops"></span>
+      </div>
+    </div>
+  </div>
+
+  <header class="top">
+    <div class="brand">
+      <span class="brand__mark" aria-hidden="true"></span>
+      <h1 class="brand__name">weather for a week</h1>
+    </div>
+    <p class="brand__tag">Прогноз на тиждень · Open-Meteo</p>
+  </header>
+
+  <main class="shell">
+    <section class="search" aria-label="Пошук міста">
+      <form id="search-form" class="search__form" autocomplete="off">
+        <label class="sr-only" for="city-input">Місто</label>
+        <input
+          id="city-input"
+          name="city"
+          type="search"
+          placeholder="Введіть місто, наприклад Київ"
+          required
+        />
+        <button type="submit" class="search__btn">Знайти</button>
+      </form>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+      <ul id="suggestions" class="suggestions" hidden></ul>
+    </section>
+
+    <section id="hero-weather" class="hero-weather" hidden>
+      <p class="hero-weather__place" id="place-name"></p>
+      <p class="hero-weather__temp" id="today-temp"></p>
+      <p class="hero-weather__desc" id="today-desc"></p>
+      <div class="hero-weather__meta" id="today-meta"></div>
+    </section>
+
+    <section class="week" aria-labelledby="week-title">
+      <h2 id="week-title" class="week__title">Погода на тиждень</h2>
+      <div id="forecast" class="forecast"></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    Дані: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
